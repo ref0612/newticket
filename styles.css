@@ -75,6 +75,8 @@ body {
     margin: 0 0 0 0.5mm; /* Disminuye el margen izquierdo */
     padding: 3mm;
     border: 1px dashed #999;
+    position: relative;
+    overflow: visible;
 }
 .ticket {
     text-align: left;
@@ -229,6 +231,7 @@ body {
 */
 @media print {
     .print-btn { display: none !important; }
+    #ticket-selector, label[for="ticket-selector"] { display: none !important; }
     body, .container, .ticket-wrapper {
         border: none !important;
         padding: 0 !important;
@@ -252,5 +255,36 @@ body {
     }
     .section, .passenger-section, .price-section, .route-section, .duplicate {
         border-bottom: 1px dashed #999 !important;
+    }
+    .watermark-reimpreso {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1000;
+        user-select: none;
+        display: flex !important;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        opacity: 1 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+    .watermark-reimpreso span {
+        display: block;
+        width: 100%;
+        text-align: center;
+        font-size: 38px;
+        color: #444 !important;
+        opacity: 0.18 !important;
+        font-weight: 900;
+        letter-spacing: 6px;
+        transform: rotate(-25deg);
+        white-space: nowrap;
+        margin: 0;
+        padding: 0;
     }
 }

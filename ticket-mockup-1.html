@@ -1,0 +1,112 @@
+<button id="print-btn" class="print-btn">Imprimir Boleto</button>
+<div class="ticket-wrapper">
+    <div class="ticket">
+        <div class="header">
+            <img src="kupos.cl-color.png" alt="Logo Pullman Bus" class="logo" />
+        </div>
+        <div class="route-section" style="display: flex; align-items: center; gap: 8px;">
+            <!-- Columna QR -->
+            <div class="qr-col">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?data=TS9629964&size=60x60" alt="QR Boleto" class="qr-img" />
+            </div>
+            <!-- Columna etiquetas -->
+            <div class="labels-col">
+                <div class="route-label route-label-main">Origen:</div>
+                <div class="route-label route-label-main">Destino:</div>
+                <div class="route-label route-label-sub">Fecha:</div>
+                <div class="route-label route-label-sub">Hora:</div>
+            </div>
+            <!-- Columna valores -->
+            <div class="values-col">
+                <div class="route-value route-value-main">Santiago</div>
+                <div class="route-value route-value-main">Viña del Mar</div>
+                <div class="route-value route-value-sub">Vie 08/08/2025</div>
+                <div class="route-value route-value-sub">18:15</div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="info-row">
+                <span class="info-label2">Abordaje:</span>
+                <span class="info-value2">Term. Pajaritos</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label2">Bajada:</span>
+                <span class="info-value2">Cruce Quilpué</span>
+            </div>
+        </div>
+        <div class="passenger-section">
+            <div class="passenger-label">INFORMACIÓN DEL PASAJERO</div><br>
+            <div class="passenger-name">Samuel Guillermo Guajardo Ossandon</div>
+            <div class="passenger-id">RUT: 76.335.837-2</div>
+            <div class="info-row">
+                <span class="info-label2">N° Boleto:</span>
+                <span class="info-value-large">TS9629964</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label2">N°Asiento:</span>
+                <span class="info-value-large">05</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label2">Tipo Asiento:</span>
+                <span class="info-value2">Ejecutivo</span>
+            </div> 
+        </div>
+        <div class="section">
+            <div class="price-section">
+                <div class="info-label2" style="display:flex;justify-content:space-between;align-items:center;gap:6px;">
+                    <span>Tarifa Oficial:</span>
+                    <span>$4.500</span>
+                </div>
+                <div class="info-row">
+                    <span class="price-label">Total Pagado</span>
+                    <span class="price-amount">$4.500</span>
+                </div>
+            </div>
+        </div>
+        <div class="section">
+            <div class="duplicate-passenger">Método de pago: Efectivo</div>
+            <div class="duplicate-passenger">Confirmado usando MOTTS9629955</div>
+            <div class="info-row">
+                <span class="info-label">Fecha de Venta:</span>
+                <span class="info-value">Vie 08/08/2025 09:51</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Emitido Por:</span>
+                <span class="info-value">owner</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">Impreso Por:</span>
+                <span class="info-value">owner</span>
+            </div>
+        </div>
+        <div class="terms">
+            <div class="terms-title">IMPORTANTE:</div>
+            <div class="terms-text">
+                Este boleto es válido para la fecha y hora señalada.
+                Para cambios hasta 4 horas antes del inicio del servicio (Art 67 DS 212/92 MT).
+                Si el valor del equipaje excede de 5 UTM, es su obligación declarar previamente en la oficina de origen (Art. 57 D.D 212/92 MT). 
+                La empresa no se hace responsable por pérdidas al interior del bus. 
+                Artículo 68° en los servicios rurales e interurbanos, cada pasajero tendrá derecho a llevar libre de pago hasta 30 kilos de equipaje siempre que su vólumen no exceda de 180 decímetros cúbicos (50 x 40 x 10 cms aproximado o similar = 0.018 M3).
+                Recuerde llegar 1 hora antes de la salida del bus. 
+                En caso de cancelación de pasajes, la empresa se reserva el derecho de retener el quince por ciento (15%) del valor del pasaje (Art. 67 d.s. 212), siendo la devolución del 85% del valor del pasaje.
+                La empresa se reserva el derecho de cambiar el número de asiento o el horario en caso de fuerza mayor. <br> <br>
+                <strong>Nota:</strong> Por favor, llegar al menos 30 minutos antes de la hora de salida. <br>
+            </div>
+        </div>
+        <div class="duplicate">
+            <div class="duplicate-header">COPIA OFICINA</div>
+            <div class="duplicate-content">
+                <div class="duplicate-route">Santiago → Quilpué</div>
+                <div class="duplicate-details">Vie 08/08/2025 - 18:15 hrs</div>
+                <div class="duplicate-seat">Asiento: <span class="bold">05</span> - Ejecutivo</div>
+                <div class="duplicate-passenger">Samuel G. Guajardo Ossandon</div>
+                <div class="duplicate-pnr">PNR: TS9629964</div>
+                <div class="duplicate-route">Servicio: Santiago-Viña del Mar 18:15hrs</div>
+                <div class="duplicate-footer">
+                    <div class="duplicate-price">Valor Boleto: $4.500</div>
+                    <div class="duplicate-company">kupos.cl</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
