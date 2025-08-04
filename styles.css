@@ -89,7 +89,7 @@ body {
     max-height: 70px;
     object-fit: contain;
 }
-.section, .passenger-section, .price-section, .route-section, .duplicate {
+.section, .passenger-section, .route-section, .duplicate {
     border-bottom: 1px solid #bbb;
     padding: 3px 0;
 }
@@ -209,10 +209,12 @@ body {
     font-size: 10px;
     margin-top: 4px;
 }
-.terms, .duplicate {
+.duplicate {
     border-top: 1px solid #bbb;
-    border-bottom: none;
     padding-top: 4px;
+    border-bottom: none;
+    margin-bottom: 3px;
+   padding-top: 4px;
     margin-bottom: 3px;
 }
 .duplicate-header {
@@ -253,7 +255,7 @@ body {
     .logo {
         filter: grayscale(1) contrast(2);
     }
-    .section, .passenger-section, .price-section, .route-section, .duplicate {
+    .section, .passenger-section, .route-section, .duplicate {
         border-bottom: 1px dashed #999 !important;
     }
     .watermark-reimpreso {
