@@ -20,6 +20,9 @@
         <div id="ticket-mockup-3" class="ticket-mockup" style="display:none;"></div>
         <div id="ticket-mockup-4" class="ticket-mockup" style="display:none;"></div>
     </div>
+    <div id="block-shortcuts-msg" style="display:none;position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#222;color:#fff;padding:12px 24px;border-radius:8px;z-index:9999;font-size:16px;font-weight:600;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+        La impresión y menú del navegador están bloqueados.
+    </div>
     <script src="script.js"></script>
     <script>
     // Cargar el contenido HTML de cada mockup externo
@@ -31,7 +34,7 @@
                 // Volver a asociar el evento de impresión al botón dentro del mockup cargado
                 const btn = document.getElementById(id).querySelector('.print-btn');
                 if (btn) {
-                    btn.onclick = function() { window.print(); };
+                    btn.onclick = triggerPrint;
                 }
             });
     }
@@ -52,6 +55,59 @@
     document.getElementById('ticket-selector').addEventListener('change', function() {
         showMockup(this.value);
     });
+
+    let shortcutsBlocked = true;
+    function showBlockMsg() {
+        const msg = document.getElementById('block-shortcuts-msg');
+        msg.style.display = 'block';
+        setTimeout(() => { msg.style.display = 'none'; }, 2200);
+    }
+    function blockShortcuts(e) {
+        if (!shortcutsBlocked) return;
+        // Bloquear Ctrl+P, Cmd+P
+        if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'p') {
+            e.preventDefault();
+            showBlockMsg();
+        }
+        // Bloquear F12, Ctrl+Shift+I, Ctrl+Shift+C, Ctrl+Shift+J
+        if (
+            e.key === 'F12' ||
+            ((e.ctrlKey || e.metaKey) && e.shiftKey && ['i','c','j'].includes(e.key.toLowerCase()))
+        ) {
+            e.preventDefault();
+            showBlockMsg();
+        }
+    }
+    document.addEventListener('keydown', blockShortcuts);
+    // Bloquear menú contextual (botón derecho)
+    document.addEventListener('contextmenu', function(e) {
+        if (shortcutsBlocked) {
+            e.preventDefault();
+            showBlockMsg();
+        }
+    });
+    // Opción para habilitar/deshabilitar el bloqueo
+    window.setShortcutsBlocked = function(val) {
+        shortcutsBlocked = !!val;
+    }
+    // Bloqueo visual en impresión: si shortcutsBlocked está activo, se agrega la clase block-print al body antes de imprimir
+    let allowPrint = false;
+    window.onbeforeprint = function() {
+        if (shortcutsBlocked && !allowPrint) {
+            document.body.classList.add('block-print');
+        } else {
+            document.body.classList.remove('block-print');
+        }
+    };
+    window.onafterprint = function() {
+        document.body.classList.remove('block-print');
+        allowPrint = false;
+    };
+    // Solo permitir impresión desde el botón
+    function triggerPrint() {
+        allowPrint = true;
+        window.print();
+    }
     </script>
 </body>
 </html>
