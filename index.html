@@ -8,13 +8,16 @@
 </head>
 <body>
     <div class="container">
-        <label for="ticket-selector" style="font-weight:600;">Selecciona tipo de boleto:</label>
-        <select id="ticket-selector" style="margin: 10px 0; padding: 4px 8px; font-size: 15px;">
-            <option value="1">Normal with MOT confirmed</option>
-            <option value="2">with discount</option>
-            <option value="3">with bifurcation</option>
-            <option value="4">reprinted</option>
-        </select>
+        <div class="ticket-controls">
+            <label for="ticket-selector" class="selector-label">Selecciona tipo de boleto:</label>
+            <select id="ticket-selector" class="selector-input">
+                <option value="1">Normal with MOT confirmed</option>
+                <option value="2">with discount</option>
+                <option value="3">with bifurcation</option>
+                <option value="4">reprinted</option>
+            </select>
+            <button class="print-btn-ui" type="button">Imprimir Boleto</button>
+        </div>
         <div id="ticket-mockup-1" class="ticket-mockup"></div>
         <div id="ticket-mockup-2" class="ticket-mockup" style="display:none;"></div>
         <div id="ticket-mockup-3" class="ticket-mockup" style="display:none;"></div>
@@ -31,10 +34,10 @@
             .then(res => res.text())
             .then(html => {
                 document.getElementById(id).innerHTML = html;
-                // Volver a asociar el evento de impresión al botón dentro del mockup cargado
-                const btn = document.getElementById(id).querySelector('.print-btn');
-                if (btn) {
-                    btn.onclick = triggerPrint;
+                // El botón de imprimir de la UI principal
+                const mainPrintBtn = document.querySelector('.print-btn-ui');
+                if (mainPrintBtn) {
+                    mainPrintBtn.onclick = triggerPrint;
                 }
             });
     }
@@ -46,9 +49,13 @@
     // Mostrar solo el ticket seleccionado
     function showMockup(n) {
         for(let i=1;i<=4;i++) {
-            document.getElementById('ticket-mockup-'+i).style.display = 'none';
+            const el = document.getElementById('ticket-mockup-'+i);
+            el.style.display = 'none';
+            el.classList.remove('active-print');
         }
-        document.getElementById('ticket-mockup-'+n).style.display = '';
+        const selected = document.getElementById('ticket-mockup-'+n);
+        selected.style.display = '';
+        selected.classList.add('active-print');
     }
     // Mostrar el primero por defecto
     showMockup(1);
